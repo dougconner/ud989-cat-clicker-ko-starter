@@ -1,4 +1,4 @@
-var ViewModel = function() {
+var Cat = function() {
     this.clickCount = ko.observable(0);
     this.clickAge = ko.computed(function(){
         var clicks = this.clickCount();
@@ -18,12 +18,15 @@ var ViewModel = function() {
         "tabtab", "T-Bone", "Mr. T", "Tabitha"
         ]);
 
+};
+
+var ViewModel = function() {
+
+    this.currentCat = ko.observable( new Cat() );
+
     this.incrementCounter = function() {
-        this.clickCount(this.clickCount() + 1);
-
+        this.currentCat().clickCount(this.currentCat().clickCount() + 1);
     };
-
-
 };
 
 ko.applyBindings(new ViewModel());
